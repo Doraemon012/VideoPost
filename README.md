@@ -16,5 +16,3 @@
 2. react-toastify : This package is used here to send notifications to the users.
 
 3. firebase : This is used to take the api od firebase.
-"# VideoPost" 
-"# VideoPost" 
