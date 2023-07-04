@@ -10,7 +10,6 @@ import { useState } from "react";
 import { getStorage } from "firebase/storage";
 import { toast } from "react-toastify";
 import("crypto")
-// yes
 const Styles = makeStyles((theme)=>({ //here
     login_card:{
         backgroundColor:'#1A120B', 
@@ -77,11 +76,9 @@ const Styles = makeStyles((theme)=>({ //here
         marginLeft:'1em',
         fontSize: '1em',
         color:'#D2FAFB',
-        // float:'right',
     },
     name_good:{
         marginBottom:'1em',
-        //borderRadius:'1em',
         backgroundColor:'#312F44', 
         minWidth: '10em',
         border:'0px',
@@ -90,14 +87,8 @@ const Styles = makeStyles((theme)=>({ //here
         fontSize: '1em',
     }
 
-    // 👍 no ismai display vagera aayga, attributes aayenge
     
   }))
-// yahan edit karo idhar kya karna haiha
-// json aati hai?
-// toh naam likhke colorn lagake curly braces open kar lo aur upar wale format ko follow kar lo
-
-// const auth = getAuth();
 const db = firebase.database();
 
 export const SignIn = () => {
@@ -135,20 +126,14 @@ export const SignIn = () => {
 
                 createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    // Signed in 
                     const user = userCredential
                     console.log(user)
-                    // ...ab dikh raha hai ?
-                    // yass okokok line 29 par jao
-                    // 9-28 tak edit kao
                     console.log(auth.currentUser)
                     const usersRef = db.ref("users")
                     const user_email_to_post = encodeURIComponent(`${email}`).replace(/\./g, '%2E')
                     get(child(usersRef, user_email_to_post)).then((snapshot) => {
             
                         if (snapshot.exists()) {
-                            // const newUserRef = db.ref("users/"+user_email_to_post+"/pic")
-                            // newUserRef.set(`${response.user.photoURL}`)
                         } else {
                             const newUserRef = usersRef.child(user_email_to_post)
                             newUserRef.set({"name":`${username}`,
@@ -208,7 +193,7 @@ export const SignIn = () => {
 
                 <button onClick={()=>{create_account()}} className={styles.sign}>Sign Up</button>
                 <div className={styles.dont}>Already have an account? <a href="../login" className={styles.link}>&nbsp;Log In</a></div>
-                <div className={styles.dont}>&#169; Neyati IIITDM, Jbalpur</div>
+                <div className={styles.dont}>&#169; Neyati IIITDM, Jabalpur</div>
             </div>
         </div>
     )

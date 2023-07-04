@@ -17,9 +17,6 @@ const Styles = makeStyles((theme)=>({
         top: '4em',
         width: 'auto',
         height: 'auto',
-        // zIndex: '-100',
-        // background-size: 'cover',
-        // overflow: 'hidden',
     },
     container:{
         height:'100%', width:'100%', backgroundColor:'#1A120B',
@@ -102,11 +99,7 @@ const Styles = makeStyles((theme)=>({
         width:'400%'
     },
     shareee:{
-        // display:'inline-flex',
-        // marginRight:'1em',
         width:'1.7em',
-        // float:'right',
-        // marginTop:'.5em'
 
     },
     shareBtn:{
@@ -117,7 +110,6 @@ const Styles = makeStyles((theme)=>({
 
 const db = firebase.database()
 
-// https://www.youtube.com/watch?v=z3Y5gJWmVVU
 
 export const Video = () => {
     const storage = getStorage()
@@ -157,7 +149,6 @@ export const Video = () => {
             setMail(data['email'])
 
             const like_counter_button = document.getElementById('like_counter_button')
-            // db.ref(`videos/${id}`).update({ 'liked_by' : likedBy});
             if (like_counter_button !== undefined){
                 (like_counter_button as HTMLButtonElement).innerText = likes + ' '+  '🤍'
             }
@@ -172,7 +163,6 @@ export const Video = () => {
                 console.log('wrong !!')
             }
         }).catch((error) => {
-            // console.error(error);
         });
         
     }
@@ -190,7 +180,6 @@ export const Video = () => {
     
                 console.log(db.ref(`videos/${id}`))
                 const like_counter_button = document.getElementById('like_counter_button')
-                // db.ref(`videos/${id}`).update({ 'liked_by' : likedBy});
                 if (like_counter_button !== undefined){
                     (like_counter_button as HTMLButtonElement).innerText = likes + ' '+  '🤍'
                 }
@@ -213,7 +202,6 @@ export const Video = () => {
 
     
     
-    // 
     return (
 
        <div style={{height:'100%', width:'100%', backgroundColor:'#1A120B', marginBottom:'5em'}} className={styles.container}>

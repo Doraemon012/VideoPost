@@ -5,7 +5,6 @@ import {ref, uploadBytes, getDownloadURL} from 'firebase/storage'
 import { getStorage } from "firebase/storage"
 import { child, get } from "firebase/database"
 import { toast } from "react-toastify"
-// import { randomUUID } from "crypto"
 
 function generateUUID() { // Public Domain/MIT
     var d = new Date().getTime();//Timestamp

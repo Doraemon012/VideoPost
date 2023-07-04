@@ -75,11 +75,9 @@ const Styles = makeStyles((theme)=>({
         marginLeft:'1em',
         fontSize: '1em',
         color:'#D2FAFB',
-        // float:'right',
     },
     name_good:{
         marginBottom:'1em',
-        //borderRadius:'1em',
         backgroundColor:'#312F44', 
         minWidth: '10em',
         border:'0px',
@@ -109,9 +107,7 @@ export const Login = () => {
     const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value)
     }
-    // hey yeh login hai 
     useEffect(() => {
-        // 👇️ only runs once
         toast.info('Login with your account !')
       }, []);
     
@@ -123,12 +119,10 @@ export const Login = () => {
 
             signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in 
                 const user = userCredential
                 console.log(user)
                 toast.success('Logged in successfully with your account !')
 
-                // ...ab dikh raha hai ?
                 
                 console.log(auth.currentUser)
                 const usersRef = db.ref("users")
