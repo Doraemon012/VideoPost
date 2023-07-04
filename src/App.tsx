@@ -10,6 +10,7 @@ import { Create } from './components/Create';
 import { Video } from './components/Video';
 import AuthRoute from './components/AuthRoute';
 import { NotificationsPannel } from './components/NotificationsPannel';
+import { NotFound } from './components/NotFound';
 declare global {
   interface Window {
     $userName: string;
@@ -38,6 +39,8 @@ function App() {
           <Route path="/create" element={<AuthRoute><Create/></AuthRoute>} />
           {/* <Route path="/video/:id" element={<AuthRoute><Video/></AuthRoute>} /> */}
           <Route path="/video/:id" element={<AuthRoute><Video/></AuthRoute>} />
+          <Route path="*" element={<NotFound/>} />
+
         </Routes>
       </BrowserRouter>
     </div>
