@@ -11,7 +11,7 @@
 
 - I have used some important npm packages here :
 
-1. miui: This package is used here to style the webpage.
+1. mui: This package is used here to style the webpage.
 
 2. react-toastify : This package is used here to send notifications to the users.
 
