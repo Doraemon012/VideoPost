@@ -1,18 +1,25 @@
-# What is this app ?
+# VideoPost 🎥
 
-## This is a video sharing app.
-## This app can be used to upload a video and share it with the public.
+Welcome to VideoPost, a video sharing web app built with ReactJS, Material-UI (mui), TypeScript, Firebase, and powered by react-toastify. 🚀
 
-# How is it created ?
+## Features
 
-- This app is created with react typescript.
+- 📺 View Videos: Explore a variety of engaging videos from our community.
+- 📤 Upload Videos: Share your own content by uploading videos effortlessly.
+- 🎉 Interactive Toasts: Enjoy a seamless user experience with real-time notifications using react-toastify.
 
-- For the database, I have used firebase. For login & signup, I have used firebse authentication an user can sign up for this application with an email and a password. The video and the thumbnail can be uploaded in any format. For storing the images and videos here, firebase storage is used. For generating the unique id for each video, this application generates a unique uuid by the current timestamp.
+## Technologies Used5
+- ReactJS
+- Material-UI (mui)
+- TypeScript
+- Firebase
 
-- I have used some important npm packages here :
+## Demo
+![demo (1)](https://github.com/Doraemon012/VideoPost/assets/116624667/dba50923-e71c-406f-b4ff-829bc297127c)
+![demo (1)](https://github.com/Doraemon012/VideoPost/assets/116624667/7a8c3e2a-be7f-4de6-a600-024faedef043)
 
-1. mui: This package is used here to style the webpage.
-
-2. react-toastify : This package is used here to send notifications to the users.
-
-3. firebase : This is used to take the api of firebase.
+<p align="center">
+<img src="https://github.com/Doraemon012/VideoPost/assets/116624667/a0022108-1039-4331-b752-53e4a33f5519" alt="Demo" style="width: 30%;" />
+<img src="https://github.com/Doraemon012/VideoPost/assets/116624667/2b1a57c3-c0a4-4e03-b7b4-a41de4d32900" alt="Demo" style="width: 30%; margin-left: 20px; margin-right: 20px;" />
+<img src="https://github.com/Doraemon012/VideoPost/assets/116624667/0eed785c-2ad5-4739-bf6c-7ae8e1204a4d" alt="Demo" style="width: 30%;" />
+</p>
