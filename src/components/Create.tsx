@@ -163,7 +163,7 @@ export const Create = () => {
                                     'comments':'',
                                     'liked_by':''
                                 })
-                                window.location.href = `../video/${id}`
+                                window.location.href = `#/video/${id}`
                     
                             }
             
@@ -183,7 +183,7 @@ export const Create = () => {
             }
         }else{
             toast.error("Login First")
-            window.location.href = `../login`   
+            window.location.href = `#/login`   
         }
        
     }

@@ -42,9 +42,9 @@ export const Header = () => {
     const styles = Styles()
     return (
         <div className={styles.headers}>
-            <div><a href="../"><img src={ico_m} alt="" className={styles.logo_image} /></a></div>
-            <div><a href="../login"><img src={person} alt="" className={styles.user} /></a></div>
-            <div><a href="../create"><img src={pl} alt="" className={styles.create} /></a></div>
+            <div><a href="#/"><img src={ico_m} alt="" className={styles.logo_image} /></a></div>
+            <div><a href="#/login"><img src={person} alt="" className={styles.user} /></a></div>
+            <div><a href="#/create"><img src={pl} alt="" className={styles.create} /></a></div>
 
         </div>
     )

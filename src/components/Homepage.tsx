@@ -85,7 +85,7 @@ const generate_cards = () => {
   
             const link = document.createElement('a');
             link.className = styles.vidwe;
-            link.href = `../video/${a['id']}`;
+            link.href = `#/video/${a['id']}`;
   
             const card = document.createElement('div');
             card.className = styles.video_card;

@@ -156,7 +156,7 @@ export const SignIn = () => {
                                 "pic":"",
                             })
                             toast.success('Signed up success fully !')
-                            window.location.href = `../login`
+                            window.location.href = `#/login`
 
               
                         }

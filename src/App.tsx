@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Header } from './components/Header';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import { Login } from './components/Login';
 import { HomePage } from './components/Homepage';
 import { SignIn } from './components/SignIn';
@@ -25,7 +25,9 @@ function App() {
       <AuthRoute><Header/></AuthRoute>
       <AuthRoute><NotificationsPannel/></AuthRoute>
 
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
+        <HashRouter >
+      
         <Routes>
           {/* <Route path="/" element={}>
             <Route index element={<Home />} />
@@ -42,7 +44,9 @@ function App() {
           <Route path="*" element={<NotFound/>} />
 
         </Routes>
-      </BrowserRouter>
+        </HashRouter>
+
+      {/* </BrowserRouter> */}
     </div>
   );
 }
