@@ -9,74 +9,61 @@ import {firebase} from "../initFirebase"
 
 import { toast } from "react-toastify";
 import { useEffect } from "react"
-const Styles = makeStyles((theme)=>({
-    video_card:{
-        backgroundColor:'#06283D',
-        border:'1px solid #88E1F2',
-        width:'19em',
-        height:'16em',
-        margin:'1.3%',
-        display:'inline-flex',
-        padding:'',
-        borderRadius:'.3em',
-        marginRight:'5em',
-        marginTop:'30px',
-        overflowY :'hidden'
-    },
-    thumbnail:{
-        width:'90%',
-        height:'60%',
-        display:'block',
-        marginLeft:'auto',
-        marginRight:'auto',
-        marginTop:'.5em',
-        borderRadius:'.3em',
 
+const Styles = makeStyles((theme) => ({
+    thumbnail: {
+        width: '400px', // Adjust this width to match the desired width in pixels
+        height: '225px', // 16:9 aspect ratio
+        borderRadius: '0.3em',
+        objectFit: 'cover',
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '100%',
+            maxHeight: "100%",           
+          },
+      },
+    card_content: {
+      padding: '5px', // Adjust the padding to reduce space between thumbnail and text
+    },
+    VTitle: {
+      margin: '0',
+      fontSize:"16px"
+    },
+    name: {
+      margin: '10px 0',
+    },
+    container: {
+      display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      padding: '20px',
+    },
+    vidwe: {
+        textDecoration: 'none',
+        color: 'white',
+        display: 'block',
+        margin: '10px', // Add padding between the links
+      },
+      video_card: {
+        width: '100%', // Set card width to 100% on all screens
+        height: 'auto',
+        margin: '10px',
+        borderRadius: '0.3em',
+        overflow: 'hidden',
+        transition: 'transform 0.2s ease-in-out',
+        backgroundColor: 'rgb(26, 18, 11)',
+        position: 'relative',
+        '&:hover': {
+          transform: 'scale(1.02)',
+        },
+        [theme.breakpoints.down('sm')]: {
+          padding: '1em', // Add padding only on small screens
+          maxWidth: '80%', // Ensure the card doesn't exceed the screen width
+        },
+      },
+    
+  }));
+  
 
-    },
-    VTitle:{
-    },
-    userAb:{},
-    name:{
-    },
-    views:{},
-    time:{},
-    user_pic:{
-    width:'3em'
-    },
-    container:{
-        display:'flex',
-        flexDirection:'row',
-        justifyContent:'space-around',
-        flexWrap:'wrap'
-    },
-    vid:{
-        // display:'flex',
-        // justifyContent: 'center',
-        // flexWrap: 'wrap',
-        // height:'100%',
-        // width:'100%',
-        // border:'none',
-        // cursor:'pointer',
-
-    },
-    titlw:{
-        display:'block',
-        paddingInline:'1em',
-    },
-    vidwe:{
-        textDecoration:'none',
-        color:'white'
-    },
-    all:{
-        width:'100%'
-    }
-
-
-
-  }))
-
-//   https://www.youtube.com/watch?v=3_gakM-y7hE
 
 export const HomePage = () => {
     const styles = Styles()
@@ -85,92 +72,94 @@ const storage = getStorage()
 
 const generate_cards = () => {
     const dbRef = db.ref();
-
+    const cardHolder = document.getElementById('all_videos_container');
+  
     listAll(ref(storage, 'images'))
-        .then((res) => {
-            res.prefixes.forEach((folderRef) => {
-            });
-            res.items.forEach((itemRef) => {
-            const onlyId = itemRef.name.slice(-36)
+      .then((res) => {
+        res.items.forEach((itemRef) => {
+          const onlyId = itemRef.name.slice(-36);
+  
+          get(child(dbRef, `videos/${onlyId}`)).then((snapshot) => {
+            const a = snapshot.val();
+            const link_s = a['id'];
+  
+            const link = document.createElement('a');
+            link.className = styles.vidwe;
+            link.href = `../video/${a['id']}`;
+  
+            const card = document.createElement('div');
+            card.className = styles.video_card;
+  
+            const thum = document.createElement('img');
+            thum.src = `https://via.placeholder.com/1920x1080/1A120B00`;
             
-            
-            
-            get(child(dbRef, `videos/${onlyId}`)).then((snapshot) => {
-                var card_holder = document.getElementById('all_videos_container')
-                const a =  snapshot.val()
-
-            //     <a href='../video/10' style={{textDecoration:'none', color:'white'}}>
-                //     <div className={styles.video_card}>
-                //         <div style={{width:'100%'}}>
-                //         <img className={styles.thumbnail} src={sampleThumbnail} alt="" />
-                //         <div className={styles.titlw} ><h4 className={styles.VTitle}>3d snake game in ursina python</h4></div>
-                //         <div className={styles.titlw}><p className={styles.name}>User name</p></div>
-                //         </div>
-                //     </div>
-            //      </a>
-                
-                  const link_s = a['id']
-                  var link = document.createElement("a")
-                  link.className = styles.vidwe
-                  link.href = `../video/${a['id']}`
-
-                  var card = document.createElement("div")
-                  card.className = styles.video_card
-
-                  var card1 = document.createElement("div")
-                  card1.className = styles.all
-
-                  var thum = document.createElement("img")
-                  thum.className = styles.thumbnail
-
-                  const videoRef = ref(storage, `/images/thumbnail-${link_s}`)
-                  getDownloadURL(videoRef).then(
-                      function(value) {
-                          thum.src = value.toString()
-                      },
-                      function(error) { 
-                          console.log(error)
-                        }
-                  )
-
-
-                  var cn = document.createElement("div")
-                  cn.className = styles.titlw
-
-                  var ttle = document.createElement("h4")
-                  ttle.className = styles.VTitle
-                  ttle.innerText = a['title']
-
-                  
-                  var cn2 = document.createElement("div")
-                  cn2.className = styles.titlw
-
-                  var name = document.createElement("p")
-                  name.className = styles.name
-                  name.innerText = a['uploader']
-
-                  card_holder?.appendChild(link)
-                  link?.appendChild(card)
-                  card?.appendChild(card1)
-                  card1?.appendChild(thum)
-                  card1?.appendChild(cn)
-                  cn?.appendChild(ttle)
-                  card1?.appendChild(cn2)
-                  cn2?.appendChild(name)
-
-
-
-      
-                  
-      
-                }).catch((error) => {
-                    console.error(error);
-                });
-
-            });
-        }).catch((error) => {
+            thum.className = styles.thumbnail;
+            const videoRef = ref(storage, `/images/thumbnail-${link_s}`)
+            getDownloadURL(videoRef).then(
+                function(value) {
+                    thum.src = value.toString()
+                },
+                function(error) { 
+                    console.log(error)
+                  }
+            )
+  
+            const cardContent = document.createElement('div');
+            cardContent.className = styles.card_content;
+  
+            const titleMaxLength = calculateMaxTitleLength(); // Calculate max title length based on card width
+            const ttle = document.createElement('h3');
+            ttle.className = styles.VTitle;
+            ttle.innerText = trimText(a['title'], titleMaxLength, true, "title");
+  
+            const desc = document.createElement('p');
+            desc.className = styles.name;
+            desc.innerText = trimText(a['uploader'], 60, true, "uploader");
+  
+            cardHolder?.appendChild(link);
+            link?.appendChild(card);
+            card?.appendChild(thum);
+            card?.appendChild(cardContent);
+            cardContent?.appendChild(ttle);
+            cardContent?.appendChild(desc);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
         });
-}
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  
+  // Function to calculate max title length based on card width
+  const calculateMaxTitleLength = (): number => {
+    // Adjust these values based on your card's font size
+    const fontSize = 16; // Replace with the actual font size in pixels
+  
+    // Calculate the maximum number of characters that can fit in one line
+    const maxCharsInOneLine = Math.floor(window.innerWidth / (fontSize * 0.6));
+  
+    return maxCharsInOneLine;
+  };
+  
+  // Function to trim text and add "..." if it exceeds a certain length
+  const trimText = (text: string, maxLength: number, singleLine: boolean = false, the_type:string): string => {
+    if (the_type != "uploader"){
+        if (singleLine) {
+            return text.substring(0, maxLength - 3) + '...';
+          } else {
+            if (text.length > maxLength) {
+              return text.substring(0, maxLength - 3) + '...';
+            }
+          }
+          
+    }
+    return text;
+
+  };
+
 useEffect(() => {
     generate_cards()
   }, []); 

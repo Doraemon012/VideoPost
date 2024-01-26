@@ -17,9 +17,6 @@ const Styles = makeStyles((theme)=>({
         top: '4em',
         width: 'auto',
         height: 'auto',
-        // zIndex: '-100',
-        // background-size: 'cover',
-        // overflow: 'hidden',
     },
     container:{
         height:'100%', width:'100%', backgroundColor:'#1A120B',
@@ -102,11 +99,7 @@ const Styles = makeStyles((theme)=>({
         width:'400%'
     },
     shareee:{
-        // display:'inline-flex',
-        // marginRight:'1em',
         width:'1.7em',
-        // float:'right',
-        // marginTop:'.5em'
 
     },
     shareBtn:{
@@ -117,7 +110,6 @@ const Styles = makeStyles((theme)=>({
 
 const db = firebase.database()
 
-// https://www.youtube.com/watch?v=z3Y5gJWmVVU
 
 export const Video = () => {
     const storage = getStorage()
@@ -219,12 +211,12 @@ export const Video = () => {
        <div style={{height:'100%', width:'100%', backgroundColor:'#1A120B', marginBottom:'5em'}} className={styles.container}>
            <div className={styles.all_v}>
                 <div className={styles.video_m} style={{display:'block', marginLeft:'auto', marginRight:'auto'}}>
-                        <video className={styles.Video} src={videoUrl} controls ></video>
+                        <video preload="auto"  className={styles.Video} src={videoUrl} controls ></video>
                         <div> <button onClick={()=>{like_video()}} id="like_counter_button" style={{backgroundColor:'inherit', color:'white', fontSize:'1.2em', border:'0px'}}>🤍</button> <button className={styles.shareBtn} onClick={()=>{
                              navigator.clipboard.writeText(window.location.href);
                              toast.success('Url Copied !')
                         }}><img  src={share_btn} alt="" className={styles.shareee} /></button></div>
-                        <div style={{border:'1.5px solid #88E1F2',borderRadius:'.3em',padding:'1em', marginTop:'2em'}}> 
+                        <div> 
                         <h1 style={{color:'white', margin:'1em auto 1em auto'}}>{title}</h1>
                         <div><p style={{color:'white'}}><b>Uploaded By</b> : {mail}</p></div>
                         <p style={{color:'white' , margin:'auto auto 3em auto'}}><b>Description</b> : <p>{desc}</p></p>
