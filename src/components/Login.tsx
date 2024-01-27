@@ -179,7 +179,6 @@ export const Login = () => {
                 <button onClick={()=>{loginUser()}} className={styles.sign}>Login</button> {/*still none*/}
                 <div className={styles.dont}>Don't have an account? <a href="#/signIn" className={styles.link}>Sign Up</a></div>
                 <div className={styles.dont}>&#169; Neyati IIITDM, Jabalpur</div>
-
             </div>
         </div>
     )

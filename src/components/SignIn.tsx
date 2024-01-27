@@ -207,8 +207,8 @@ export const SignIn = () => {
                 <br />
 
                 <button onClick={()=>{create_account()}} className={styles.sign}>Sign Up</button>
-                <div className={styles.dont}>Already have an account? <a href="../login" className={styles.link}>&nbsp;Log In</a></div>
-                <div className={styles.dont}>&#169; Neyati IIITDM, Jbalpur</div>
+                <div className={styles.dont}>Already have an account? <a href="#/login" className={styles.link}>Log In</a></div>
+                <div className={styles.dont}>&#169; Neyati IIITDM, Jabalpur</div>
             </div>
         </div>
     )

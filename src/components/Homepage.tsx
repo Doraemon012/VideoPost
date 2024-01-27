@@ -12,17 +12,29 @@ import { useEffect } from "react"
 
 const Styles = makeStyles((theme) => ({
     thumbnail: {
-        width: '400px', // Adjust this width to match the desired width in pixels
-        height: '225px', // 16:9 aspect ratio
+        width: '400px',
+        height: '225px',
         borderRadius: '0.3em',
         objectFit: 'cover',
         [theme.breakpoints.down('sm')]: {
-            maxWidth: '100%',
-            maxHeight: "100%",           
+            width: '90%',
+            height: '90%',
+
+            display:'block',
+            marginLeft:'auto',
+            marginRight:'auto',
           },
       },
     card_content: {
-      padding: '5px', // Adjust the padding to reduce space between thumbnail and text
+      padding: '5px',
+      width:'100%',
+      [theme.breakpoints.down('sm')]: {
+        width:'90%',
+        display:'block',
+        marginLeft:'auto',
+        marginRight:'auto',
+      },
+      
     },
     VTitle: {
       margin: '0',
@@ -36,15 +48,23 @@ const Styles = makeStyles((theme) => ({
       justifyContent: 'center',
       flexWrap: 'wrap',
       padding: '20px',
+      [theme.breakpoints.down('sm')]: {
+        padding: '0px',
+
+      },
     },
     vidwe: {
         textDecoration: 'none',
         color: 'white',
         display: 'block',
-        margin: '10px', // Add padding between the links
+        margin: '10px',
+        [theme.breakpoints.down('sm')]: {
+          margin: '0px',
+  
+        },
       },
       video_card: {
-        width: '100%', // Set card width to 100% on all screens
+        width: '100%',
         height: 'auto',
         margin: '10px',
         borderRadius: '0.3em',
@@ -56,13 +76,15 @@ const Styles = makeStyles((theme) => ({
           transform: 'scale(1.02)',
         },
         [theme.breakpoints.down('sm')]: {
-          padding: '1em', // Add padding only on small screens
-          maxWidth: '80%', // Ensure the card doesn't exceed the screen width
+          padding: '1em',
+          width: 'auto',
+
+          // maxWidth: '80%',
         },
       },
     
   }));
-  
+
 
 
 export const HomePage = () => {

@@ -26,16 +26,18 @@ const Styles = makeStyles((theme)=>({
     all_v:{
 
     },
-    video_m:{
-        margin:'3em auto auto auto',
-        backgroundColor:'#1A120B',
-        borderRadius:'5px',
-        width:'80%',
-        height:'fit-content',
-        color:'white'
-
-        
-    },
+    video_m: {
+        margin: '0em auto auto auto',
+        backgroundColor: '#1A120B',
+        borderRadius: '5px',
+        width: '100%', // Set the width to 100% by default
+        height: 'fit-content',
+        color: 'white',
+        [theme.breakpoints.up('sm')]: {
+          width: '80%', // Adjust width on screens larger than or equal to small breakpoint
+        },
+      },
+      
     main:{
         background:'#fff',
         borderRadius:'5px',
@@ -104,7 +106,20 @@ const Styles = makeStyles((theme)=>({
     },
     shareBtn:{
         backgroundColor:'inherit', border:'none', marginTop:'.5em', float:'right', '&:hover':{cursor:'pointer'}
-    }
+    },
+    all_desc: {
+        width: '90%', // Default to 100% width
+        display: 'block',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        [theme.breakpoints.up('sm')]: {
+          width: '100%', // Adjust width on screens larger than or equal to small breakpoint
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        },
+      },
+      
   }))
 
 
@@ -216,7 +231,7 @@ export const Video = () => {
                              navigator.clipboard.writeText(window.location.href);
                              toast.success('Url Copied !')
                         }}><img  src={share_btn} alt="" className={styles.shareee} /></button></div>
-                        <div> 
+                        <div  className={styles.all_desc}>
                         <h1 style={{color:'white', margin:'1em auto 1em auto'}}>{title}</h1>
                         <div><p style={{color:'white'}}><b>Uploaded By</b> : {mail}</p></div>
                         <p style={{color:'white' , margin:'auto auto 3em auto'}}><b>Description</b> : <p>{desc}</p></p>
